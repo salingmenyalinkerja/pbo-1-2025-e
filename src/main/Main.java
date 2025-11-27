@@ -1,8 +1,8 @@
 package main;
 
-import translationtree.controller.*;
-import translationtree.model.*;
-import translationtree.view.*;
+import docurepo.controller.*;
+import docurepo.model.*;
+import docurepo.view.*;
 
 class Main {
     public static void main(String[] args) {
