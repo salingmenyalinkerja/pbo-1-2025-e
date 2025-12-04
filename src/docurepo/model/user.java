@@ -1,14 +1,53 @@
 package docurepo.model;
 
 public class User {
-    protected String username;
-    protected String password;
+    private String nama;
+    private String nim;
+    private String role;
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public User() {
+        // Contoh default user dengan NIM 021240005
+        this.nama = "User Contoh";
+        this.nim = "021240005";
+        this.role = "Viewer";
     }
 
-    public String GetUsername() { return username; }
-    public String GetPassword() { return password; }
+    public User(String nama, String nim, String role) {
+        this.nama = nama;
+        this.nim = nim;
+        this.role = role;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getNim() {
+        return nim;
+    }
+
+    public void setNim(String nim) {
+        this.nim = nim;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User {" +
+                "nama='" + nama + '\'' +
+                ", nim='" + nim + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 }
