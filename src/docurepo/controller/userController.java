@@ -1,29 +1,61 @@
 package docurepo.controller;
 
+import docurepo.model.Admin;
+import docurepo.model.Editor;
 import docurepo.model.User;
+import docurepo.model.Viewer;
 import java.util.*;
 
 public class UserController {
-    private List<User> users = new ArrayList<>();
-
-    public void addUser(String username, String password, String role) {
-        users.add(new User(username, password, role));
+    public static UserController Instance;
+    public static void Init() {
+        Instance = new UserController();
+        InitUsers();
     }
 
-    public User authenticate(String username, String password) {
-        for (User u : users) {
-            if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
-                return u;
-            }
+    private static ArrayList<User> users;
+    private static void InitUsers() {
+        users = new ArrayList<>();
+        users.add(new Admin("admin", "admin"));
+    }
+
+    public void AddUser(String username, String password) {
+        users.add(new User(username, password));
+    }
+
+    // public User authenticate(String username, String password) {
+    //     for (User u : users) {
+    //         if (u.GetUsername().equals(username) && u.GetPassword().equals(password)) {
+    //             return u;
+    //         }
+    //     }
+    //     return null;
+    // }
+
+    public boolean IsAdmin(User user) {
+        return user instanceof Admin;
+    }
+
+    public boolean IsEditor(User user) {
+        return user instanceof Editor;
+    }
+
+    public boolean IsViewer(User user) {
+        return user instanceof Viewer;
+    }
+
+    public boolean IsUserValid(User user){
+        for (User storedUser: users) {
+            if (
+                user.GetUsername().equals(storedUser.GetUsername()) &&
+                user.GetPassword().equals(storedUser.GetPassword())
+            )
+                return true;
         }
-        return null;
+        return false;
     }
 
-    public boolean isAdmin(User user) {
-        return "Admin".equals(user.getRole());
-    }
-
-    public boolean isEditor(User user) {
-        return "Editor".equals(user.getRole());
+    public boolean IsUserValid(String username, String password){
+        return IsUserValid(new User(username, password));
     }
 }
