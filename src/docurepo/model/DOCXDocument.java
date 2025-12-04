@@ -1,11 +1,18 @@
-package docurepo.model;
+package model;
 
 public class DOCXDocument extends Document {
-    public static void main(String[] args){
-        System.out.println("=====DEBUGGING=====");
+
+    public DOCXDocument(String title, String content){
+        super(title, content);
     }
-    
-    public DOCXDocument(String owner, String name){
-        super(owner, name);
+
+    @Override
+    public void open(){
+        System.out.println("Opening DOCX: " + title);
+    }
+
+    @Override
+    public void save(){
+        System.out.println("Saving DOCX file...");
     }
 }
