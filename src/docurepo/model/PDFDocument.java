@@ -1,14 +1,18 @@
-package docurepo.model;
+package model;
 
 public class PDFDocument extends Document {
-    public static void main(String[] args){
-        System.out.println("=====DEBUGGING=====");
+
+    public PDFDocument(String title, String content){
+        super(title, content);
     }
-    public static void main(String[] args){
-        System.out.println("=====DEBUGGING=====");
+
+    @Override
+    public void open(){
+        System.out.println("Opening PDF: " + title);
     }
-    
-    public PDFDocument(String owner, String name){
-        super(owner, name);
+
+    @Override
+    public void save(){
+        System.out.println("Exporting as PDF...");
     }
 }
