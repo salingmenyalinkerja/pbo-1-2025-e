@@ -1,38 +1,21 @@
-package docurepo.model;
+package model;
 
-public class Document {
-    
-    protected String owner;
-    protected String name;
-    protected int version;
+public abstract class Document {
+    protected String title;
+    protected String content;
 
-    public Document(String owner, String name){
-        SetOwner(owner);
-        SetName(name);
-        SetVersion(1);
+    public Document(String title, String content){
+        this.title = title;
+        this.content = content;
     }
 
-    public void SetOwner(String owner){
-        this.owner = owner;
-    }
+    public String getTitle(){ return title; }
+    public String getContent(){ return content; }
 
-    public void SetName(String name){
-        this.name = name;
-    }
+    public abstract void open();
+    public abstract void save();
 
-    public void SetVersion(int version){
-        this.version = version;
-    }
-
-    public String GetOwner(){
-        return owner;
-    }
-
-    public String GetName(){
-        return name;
-    }
-
-    public int GetVersion(){
-        return version;
+    public String getInfo(){
+        return "Title: " + title;
     }
 }
